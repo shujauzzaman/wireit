@@ -1,0 +1,65 @@
+---
+// src/pages/thank-you.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Thank you — Wireit Technologies" description="Thanks for reaching out to Wireit Technologies.">
+  <section class="thank-you">
+    <div class="container thank-you__inner">
+      <p class="eyebrow">Message sent</p>
+      <h1>Thanks for reaching out</h1>
+      <p class="thank-you__sub">
+        We've received your message and will get back to you within a day or two.
+      </p>
+      <a href="/" class="btn btn--primary">Back to home</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .thank-you {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .thank-you__inner {
+    text-align: center;
+    max-width: 480px;
+    margin-inline: auto;
+    padding-block: var(--space-xl);
+  }
+
+  .eyebrow {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-coral);
+    margin-bottom: var(--space-xs);
+  }
+
+  .thank-you__sub {
+    color: var(--color-ink-soft);
+    margin-block: var(--space-sm) var(--space-md);
+  }
+
+  .btn {
+    display: inline-block;
+    font-weight: 600;
+    font-size: var(--fs-body);
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .btn--primary {
+    background: var(--color-coral);
+    color: var(--color-white);
+  }
+
+  .btn--primary:hover {
+    background: var(--color-coral-deep);
+    transform: translateY(-1px);
+  }
+</style>
