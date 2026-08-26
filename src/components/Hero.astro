@@ -1,0 +1,167 @@
+---
+// src/components/Hero.astro
+---
+
+<section class="hero" id="home">
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Software Solutions</p>
+      <h1 class="hero__headline">
+        We build the systems<br />that connect your business
+      </h1>
+      <p class="hero__subhead">
+        Custom software, products, and services — from first idea to
+        ongoing support, all under one roof.
+      </p>
+      <div class="hero__actions">
+        <a href="#contact" class="btn btn--primary">Start a project</a>
+        <a href="#portfolio" class="btn btn--ghost">See our work</a>
+      </div>
+    </div>
+
+    <div class="hero__visual" aria-hidden="true">
+      <svg class="wire-svg" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          class="wire-path"
+          d="M40 380 C 120 380, 100 260, 200 260 S 260 140, 340 140 S 380 60, 440 60"
+          stroke="var(--color-coral)"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        />
+        <circle class="wire-node" cx="40" cy="380" r="7" fill="var(--color-coral)" />
+        <circle class="wire-node" cx="200" cy="260" r="5" fill="var(--color-coral)" />
+        <circle class="wire-node" cx="340" cy="140" r="5" fill="var(--color-coral)" />
+        <circle class="wire-node" cx="440" cy="60" r="7" fill="var(--color-coral)" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-block: var(--space-xl) var(--space-lg);
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .hero__eyebrow {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-coral);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero__headline {
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero__subhead {
+    font-size: 1.125rem;
+    color: var(--color-ink-soft);
+    max-width: 42ch;
+    margin-bottom: var(--space-md);
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    font-weight: 600;
+    font-size: var(--fs-body);
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius);
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn--primary {
+    background: var(--color-coral);
+    color: var(--color-white);
+  }
+
+  .btn--primary:hover {
+    background: var(--color-coral-deep);
+    transform: translateY(-1px);
+  }
+
+  .btn--ghost {
+    background: transparent;
+    color: var(--color-ink);
+    border: 1px solid var(--color-line);
+  }
+
+  .btn--ghost:hover {
+    border-color: var(--color-coral);
+    color: var(--color-coral);
+  }
+
+  .hero__visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .wire-svg {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+
+  .wire-path {
+    stroke-dasharray: 700;
+    stroke-dashoffset: 700;
+    animation: draw-wire 1.8s ease forwards 0.3s;
+  }
+
+  .wire-node {
+    opacity: 0;
+    animation: fade-in-node 0.4s ease forwards;
+  }
+
+  .wire-node:nth-of-type(1) { animation-delay: 0.3s; }
+  .wire-node:nth-of-type(2) { animation-delay: 0.9s; }
+  .wire-node:nth-of-type(3) { animation-delay: 1.5s; }
+  .wire-node:nth-of-type(4) { animation-delay: 2.1s; }
+
+  @keyframes draw-wire {
+    to { stroke-dashoffset: 0; }
+  }
+
+  @keyframes fade-in-node {
+    to { opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .wire-path {
+      stroke-dashoffset: 0;
+      animation: none;
+    }
+    .wire-node {
+      opacity: 1;
+      animation: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+
+    .hero__visual {
+      order: -1;
+      max-width: 280px;
+      margin-inline: auto;
+    }
+  }
+</style>

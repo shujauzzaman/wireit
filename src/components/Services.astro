@@ -1,0 +1,103 @@
+---
+// src/components/Services.astro
+
+const services = [
+  {
+    title: 'Custom Development',
+    description:
+      'Web apps, internal tools, and platforms built from scratch around your actual workflow — not a generic template.',
+  },
+  {
+    title: 'Technical Consulting',
+    description:
+      'Architecture reviews, technology choices, and roadmapping for teams that need an outside technical opinion.',
+  },
+  {
+    title: 'Ongoing Support',
+    description:
+      'Maintenance, updates, and monitoring after launch, so what we build keeps working as your business grows.',
+  },
+];
+---
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="services__heading">
+      <p class="eyebrow">What we do</p>
+      <h2>Three ways we help</h2>
+    </div>
+
+    <div class="services__grid">
+      {services.map((service, i) => (
+        <div class="service-card">
+          <span class="service-card__index">{String(i + 1).padStart(2, '0')}</span>
+          <h3>{service.title}</h3>
+          <p>{service.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    padding-block: var(--space-lg);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .services__heading {
+    margin-bottom: var(--space-lg);
+    max-width: 40ch;
+  }
+
+  .eyebrow {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-coral);
+    margin-bottom: var(--space-xs);
+  }
+
+  .services__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .service-card {
+    padding: var(--space-md);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .service-card:hover {
+    border-color: var(--color-coral);
+    transform: translateY(-3px);
+  }
+
+  .service-card__index {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-coral);
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-card h3 {
+    margin-bottom: var(--space-xs);
+  }
+
+  .service-card p {
+    color: var(--color-ink-soft);
+    font-size: var(--fs-small);
+  }
+
+  @media (max-width: 900px) {
+    .services__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

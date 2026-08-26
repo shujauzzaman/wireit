@@ -1,0 +1,182 @@
+---
+// src/components/Contact.astro
+---
+
+<section class="contact" id="contact">
+  <div class="container contact__inner">
+    <div class="contact__form-col">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Let's build something</h2>
+      <p class="contact__sub">
+        Tell us a bit about your project and we'll get back to you within a day or two.
+      </p>
+
+      <form class="contact-form" name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact" />
+
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary">Send message</button>
+      </form>
+    </div>
+
+    <div class="contact__details-col">
+      <div class="detail-block">
+        <h3>Email</h3>
+        <a href="mailto:hello@wireit.tech">hello@wireit.tech</a>
+      </div>
+
+      <div class="detail-block">
+        <h3>Based in</h3>
+        <p>Rawalpindi, Pakistan — working with clients globally</p>
+      </div>
+
+      <div class="detail-block">
+        <h3>Elsewhere</h3>
+        <div class="socials">
+          <a href="https://github.com/shujauzzaman" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding-block: var(--space-lg);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .contact__inner {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-lg);
+  }
+
+  .eyebrow {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-coral);
+    margin-bottom: var(--space-xs);
+  }
+
+  .contact__sub {
+    color: var(--color-ink-soft);
+    margin-block: var(--space-xs) var(--space-md);
+    max-width: 42ch;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 480px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .field label {
+    font-size: var(--fs-small);
+    font-weight: 600;
+  }
+
+  .field input,
+  .field textarea {
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius);
+    background: var(--color-white);
+    color: var(--color-ink);
+    resize: vertical;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--color-coral);
+  }
+
+  .btn {
+    display: inline-block;
+    font-weight: 600;
+    font-size: var(--fs-body);
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.15s ease;
+    width: fit-content;
+  }
+
+  .btn--primary {
+    background: var(--color-coral);
+    color: var(--color-white);
+  }
+
+  .btn--primary:hover {
+    background: var(--color-coral-deep);
+    transform: translateY(-1px);
+  }
+
+  .contact__details-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding-top: calc(var(--fs-h2) + var(--space-md));
+  }
+
+  .detail-block h3 {
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-ink-soft);
+    margin-bottom: 0.35rem;
+  }
+
+  .detail-block a,
+  .detail-block p {
+    font-size: 1rem;
+    color: var(--color-ink);
+  }
+
+  .detail-block a:hover {
+    color: var(--color-coral);
+  }
+
+  .socials {
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  @media (max-width: 800px) {
+    .contact__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .contact__details-col {
+      padding-top: 0;
+    }
+  }
+</style>

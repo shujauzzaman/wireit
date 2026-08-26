@@ -1,0 +1,84 @@
+---
+// src/components/About.astro
+---
+
+<section class="about" id="about">
+  <div class="container about__inner">
+    <div class="about__heading">
+      <p class="eyebrow">About Wireit</p>
+      <h2>Software partners, not just vendors</h2>
+    </div>
+
+    <div class="about__body">
+      <p class="about__lead">
+        Wireit Technologies builds software the way it should be built —
+        with a clear plan, honest communication, and code that holds up
+        long after launch.
+      </p>
+      <p>
+        We work across the full lifecycle: custom development, technical
+        consulting, and ongoing support — plus our own subscription-based
+        products, built from the same standards we bring to client work.
+      </p>
+      <p>
+        Whether you need a system built from scratch or an existing one
+        untangled, we bring the same discipline: understand the problem
+        first, then build the smallest thing that solves it well.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding-block: var(--space-lg);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .about__inner {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .eyebrow {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-coral);
+    margin-bottom: var(--space-xs);
+  }
+
+  .about__heading h2 {
+    max-width: 16ch;
+  }
+
+  .about__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .about__lead {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  .about__body p:not(.about__lead) {
+    color: var(--color-ink-soft);
+  }
+
+  @media (max-width: 800px) {
+    .about__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .about__heading h2 {
+      max-width: none;
+    }
+  }
+</style>

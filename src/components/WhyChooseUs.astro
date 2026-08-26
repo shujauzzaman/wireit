@@ -1,0 +1,107 @@
+---
+// src/components/WhyChooseUs.astro
+
+const points = [
+  {
+    title: 'Clear communication',
+    description: 'No jargon walls or radio silence — you always know where your project stands.',
+  },
+  {
+    title: 'Built to scale',
+    description: 'Code that handles growth, not just the demo — because most software needs to last.',
+  },
+  {
+    title: 'Fast, honest estimates',
+    description: 'Realistic timelines and costs upfront, with no surprise scope creep later.',
+  },
+  {
+    title: 'Support that continues',
+    description: "We don't disappear after launch — ongoing support is part of how we work.",
+  },
+];
+---
+
+<section class="why" id="why">
+  <div class="container">
+    <div class="why__heading">
+      <p class="eyebrow">Why Wireit</p>
+      <h2>What working with us looks like</h2>
+    </div>
+
+    <div class="why__grid">
+      {points.map((point) => (
+        <div class="why-item">
+          <span class="why-item__check" aria-hidden="true">✓</span>
+          <div>
+            <h3>{point.title}</h3>
+            <p>{point.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .why {
+    padding-block: var(--space-lg);
+    border-top: 1px solid var(--color-line);
+    background: var(--color-coral-tint);
+  }
+
+  .why__heading {
+    margin-bottom: var(--space-lg);
+    max-width: 40ch;
+  }
+
+  .eyebrow {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-coral);
+    margin-bottom: var(--space-xs);
+  }
+
+  .why__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md) var(--space-lg);
+  }
+
+  .why-item {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .why-item__check {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-coral);
+    color: var(--color-white);
+    font-size: 0.875rem;
+    font-weight: 700;
+  }
+
+  .why-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .why-item p {
+    color: var(--color-ink-soft);
+    font-size: var(--fs-small);
+  }
+
+  @media (max-width: 700px) {
+    .why__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

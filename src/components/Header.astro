@@ -1,0 +1,203 @@
+---
+// src/components/Header.astro
+const navLinks = [
+  { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Portfolio', href: '#portfolio' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<header class="header" id="site-header">
+  <div class="container header__inner">
+    <a href="#home" class="header__logo">
+      <img src="/images/logo/logo.svg" alt="Wireit Technologies" width="150" height="52" />
+    </a>
+
+    <nav class="header__nav" aria-label="Main navigation">
+      <ul class="header__nav-list">
+        {navLinks.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a href="#contact" class="header__cta">Get in touch</a>
+
+    <button class="header__menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <nav class="header__mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <ul>
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href}>{link.label}</a>
+        </li>
+      ))}
+      <li><a href="#contact" class="header__cta header__cta--mobile">Get in touch</a></li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-white);
+    border-bottom: 1px solid transparent;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .header.is-scrolled {
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.06);
+    border-bottom-color: var(--color-line);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-block: 0.75rem;
+  }
+
+  .header__logo img {
+    display: block;
+    height: 64px;
+    width: auto;
+  }
+
+  .header__nav-list {
+    display: flex;
+    gap: var(--space-md);
+    list-style: none;
+  }
+
+  .header__nav-list a {
+    font-size: var(--fs-small);
+    font-weight: 500;
+    color: var(--color-ink);
+    transition: color 0.15s ease;
+  }
+
+  .header__nav-list a:hover {
+    color: var(--color-coral);
+  }
+
+  .header__cta {
+    background: var(--color-coral);
+    color: var(--color-white);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    padding: 0.6rem 1.25rem;
+    border-radius: var(--radius);
+    transition: background 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .header__cta:hover {
+    background: var(--color-coral-deep);
+  }
+
+  .header__menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .header__menu-toggle span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--color-ink);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .header__mobile-nav {
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    background: var(--color-white);
+    border-top: 1px solid var(--color-line);
+    transition: max-height 0.25s ease;
+  }
+
+  .header__mobile-nav.is-open {
+    max-height: 400px;
+  }
+
+  .header__mobile-nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-sm) var(--space-md);
+    gap: var(--space-sm);
+  }
+
+  .header__mobile-nav a {
+    font-size: var(--fs-body);
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  .header__cta--mobile {
+    display: inline-block;
+    width: fit-content;
+  }
+
+  @media (max-width: 800px) {
+    .header__nav,
+    .header__cta {
+      display: none;
+    }
+
+    .header__menu-toggle {
+      display: flex;
+    }
+
+    .header__mobile-nav {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('menu-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 8) {
+      header?.classList.add('is-scrolled');
+    } else {
+      header?.classList.remove('is-scrolled');
+    }
+  });
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = mobileNav?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Close mobile menu when a link is clicked
+  mobileNav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('is-open');
+      toggle?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>

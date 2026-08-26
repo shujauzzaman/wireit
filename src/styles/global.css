@@ -1,0 +1,105 @@
+/* ==========================================================================
+   Wireit Technologies — Global Styles & Design Tokens
+   ========================================================================== */
+
+/* --- Fonts ---
+   Space Grotesk (display) + Inter (body) — both loaded via Google Fonts
+   link tag in BaseLayout.astro, or @fontsource packages. See setup note
+   below the file.
+------------------------------------------------------------------------- */
+
+:root {
+  /* --- Color: brand --- */
+  --color-coral: #FF5757;
+  --color-coral-deep: #E13E3E;
+  --color-coral-tint: #FFF0EF;
+
+  /* --- Color: neutrals --- */
+  --color-white: #FFFFFF;
+  --color-ink: #1A1A1A;
+  --color-ink-soft: #6B6B6B;
+  --color-line: #ECE7E5;
+
+  /* --- Typography --- */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --fs-hero: clamp(2.5rem, 5vw + 1rem, 4rem);
+  --fs-h2: clamp(1.75rem, 3vw + 1rem, 2.25rem);
+  --fs-h3: 1.25rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+
+  --lh-tight: 1.1;
+  --lh-normal: 1.6;
+
+  /* --- Spacing scale --- */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+
+  /* --- Layout --- */
+  --max-width: 1200px;
+  --radius: 8px;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--color-ink);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: var(--lh-tight);
+  font-weight: 700;
+}
+
+h1 { font-size: var(--fs-hero); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img { max-width: 100%; display: block; }
+
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+/* --- Focus visibility (accessibility) --- */
+:focus-visible {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 2px;
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
