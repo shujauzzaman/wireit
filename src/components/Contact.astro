@@ -1,5 +1,6 @@
 ---
 // src/components/Contact.astro
+import { Mail, Phone, FolderGit2, MessageCircle } from '@lucide/astro';
 ---
 
 <section class="contact" id="contact">
@@ -35,19 +36,37 @@
 
     <div class="contact__details-col">
       <div class="detail-block">
-        <h3>Email</h3>
-        <a href="mailto:hello@wireit.tech">hello@wireit.tech</a>
+        <div>
+          <h3>Email</h3>
+          <div class="socials">
+            <Mail color="#ff5757" />
+            <a href="mailto:wireit.official@gmail.com">wireit.official@gmail.com</a>
+          </div>
+        </div>
       </div>
 
       <div class="detail-block">
-        <h3>Based in</h3>
-        <p>Rawalpindi, Pakistan — working with clients globally</p>
+        <div>
+          <h3>Phone</h3>
+          <div class="socials">
+            <Phone color="#ff5757" />
+            <a href="tel:+923145331294">+92 314 5331294</a>
+          </div>
+          <div class="socials">
+            <MessageCircle color="#ff5757"  />
+            <a href="tel:+923145331294">+92 314 0527276</a>
+          </div>
+          
+        </div>
       </div>
 
       <div class="detail-block">
-        <h3>Elsewhere</h3>
-        <div class="socials">
-          <a href="https://github.com/shujauzzaman" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <div>
+          <h3>Elsewhere</h3>
+          <div class="socials">
+            <FolderGit2 color="#ff5757"  />
+            <a href="https://github.com/shujauzzaman" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
         </div>
       </div>
     </div>
@@ -146,6 +165,29 @@
     padding-top: calc(var(--fs-h2) + var(--space-md));
   }
 
+  .detail-block {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .detail-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-coral-tint);
+    color: var(--color-coral);
+  }
+
+  .detail-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
   .detail-block h3 {
     font-size: var(--fs-small);
     text-transform: uppercase;
@@ -158,6 +200,11 @@
   .detail-block p {
     font-size: 1rem;
     color: var(--color-ink);
+  }
+
+  .detail-block a {
+    display: block;
+    margin-bottom: 0.25rem;
   }
 
   .detail-block a:hover {
