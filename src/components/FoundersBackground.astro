@@ -1,0 +1,109 @@
+---
+// src/components/FoundersBackground.astro
+
+const companies = [
+  {
+    name: 'SmartB Solutions Sdn Bhd',
+    link: 'https://www.smartb.co/',
+    logo: '/images/founders-bg/smartb.png',
+  },
+  {
+    name: 'Chrio',
+    link: 'https://www.chrio.site/',
+    logo: '/images/founders-bg/chrio.png',
+  },
+  {
+    name: 'Haidri Beverages (PepsiCo)',
+    link: 'https://pepsinorth.com/',
+    logo: '/images/founders-bg/haidri_beverage.png',
+  },
+  {
+    name: 'NESCOM',
+    link: 'https://www.nti.org/education-center/facilities/national-engineering-and-scientific-commission-nescom/',
+    logo: '/images/founders-bg/nescom.png',
+  },
+];
+---
+
+<section class="founders" id="founders">
+  <div class="container">
+    <div class="founders__heading">
+      <p class="eyebrow">Where we've been</p>
+      <h2>Backed by experience across leading companies</h2>
+    </div>
+
+    <ul class="founders__grid">
+      {companies.map((company) => (
+        <li class="founders__item">
+          {company.link ? (
+            <a href={company.link} target="_blank" rel="noopener noreferrer" class="founders__link">
+              <img src={company.logo} alt={company.name} class="founders__logo" loading="lazy" />
+            </a>
+          ) : (
+            <div class="founders__link">
+              <img src={company.logo} alt={company.name} class="founders__logo" loading="lazy" />
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .founders {
+    padding-block: var(--space-lg);
+    border-top: 1px solid var(--color-line);
+  }
+
+  .founders__heading {
+    margin-bottom: var(--space-lg);
+    max-width: 40ch;
+  }
+
+  .eyebrow {
+    font-size: var(--fs-small);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-coral);
+    margin-bottom: var(--space-xs);
+  }
+
+  .founders__grid {
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xs);
+  }
+
+  .founders__item {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .founders__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .founders__logo {
+    max-height: clamp(48px, 15vw, 150px);
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.75;
+    transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .founders__link:hover .founders__logo {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+</style>
